@@ -13,6 +13,7 @@
   <body>
     <div class = "container">
     <h1>Listado de Comunas</h1>
+    <a href="{{ route('comunas.create') }}" class="btn btn-success">Add</a>
     <table class="table">
   <thead>
     <tr>
@@ -23,11 +24,12 @@
     </tr>
   </thead>
   <tbody>
+    @foreach ($comunas as $comuna)
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
+      <th scope="row">{{$comuna -> comu_codi}}</th>
+      <td>{{$comuna -> comu_nomb}}</td>
+      <td>{{$comuna -> muni_nomb}}</td>
+      <td><span> Actions </span> </td>
     </tr>
   </tbody>
   </table>
