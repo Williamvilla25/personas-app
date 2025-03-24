@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use APP\Models\Comuna;
 use Illuminate\Http\Request;
+Use Illuminate\Support\Facades\DB;
 
 class ComunaController extends Controller
 {
@@ -13,7 +15,8 @@ class ComunaController extends Controller
      */
     public function index()
     {
-        //
+        $comunas = Comuna::all();
+        return view('comuna.index', ['comunas' => $comunas]);
     }
 
     /**
