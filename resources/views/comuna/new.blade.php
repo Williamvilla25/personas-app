@@ -23,7 +23,7 @@
   </div>
   <div class="mb-3">
     <label for="name" class="form-label">Commune</label>
-    <input type="text" required class="form-control" id= "id" aria-describedby = "nameHelp"
+    <input type="text" required class="form-control" id= "name" aria-describedby = "nameHelp"
         name = "name" placeholder = "comuna.name">
   </div>
 
@@ -31,7 +31,7 @@
     <select class = "form-select" id="municipality" name = "code" required>
         <option selected disabled value = "">Choose one...</option>
         @foreach ($municipios as $municipio)
-            <option value = "{{$municipio -> muni_codi}}"> {{municipio -> muni_nomb}} </option>
+            <option value = "{{$municipio -> muni_codi}}"> {{$municipio -> muni_nomb}} </option>
         @endforeach
 </select>
   <div class = "mt-3">

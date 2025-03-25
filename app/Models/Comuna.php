@@ -7,9 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comuna extends Model
 {
-    use HasFactory;
+
     protected $table = 'tb_comuna';
-    protected $primarykey = 'comuna_codi';
-    public $timetamps = false;
+    protected $primaryKey = 'comu_codi'; // Definir la clave primaria correcta
+    public $incrementing = false; // Si la clave no es autoincremental
+    
 }
 
