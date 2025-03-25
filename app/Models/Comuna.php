@@ -9,8 +9,8 @@ class Comuna extends Model
 {
 
     protected $table = 'tb_comuna';
-    protected $primaryKey = 'comu_codi'; // Definir la clave primaria correcta
-    public $incrementing = false; // Si la clave no es autoincremental
+    protected $primaryKey = 'comu_codi'; 
+    public $incrementing = false; 
     
 }
 
