@@ -17,10 +17,10 @@
     <table class="table">
   <thead>
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
+      <th scope="col">Code</th>
+      <th scope="col">Commune</th>
+      <th scope="col">Municipality</th>
+      <th scope="col">Action</th>
     </tr>
   </thead>
   <tbody>
