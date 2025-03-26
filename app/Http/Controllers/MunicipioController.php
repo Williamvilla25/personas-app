@@ -15,7 +15,7 @@ class MunicipioController extends Controller
      */
     public function index()
     {
-        $municipio = Comuna::all();
+        $municipios = Municipio::all();
         return view('municipio.index', ['municipios' =>$municipios]);
     }
 

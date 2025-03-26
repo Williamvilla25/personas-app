@@ -14,6 +14,27 @@
   <body>
     <div class="container"> 
     <h1>Listado de municipios</h1>
+    <a href="{{route('municipios.create') }}" class="btn btn-succes">Add</a>
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Code</th>
+      <th scope="col">Municipality</th>
+      <th scope="col">Department</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+      @foreach ($municipios as $municipio)
+    <tr>
+      <th scope="row">{{ $municipio->muni_codi }}</th>
+      <td>{{ $municipio->muni_nomb }}</td>
+      <td>{{ $municipio->depa_nomb }}</td>
+      <td> Actions </td>
+    </tr>
+    @endforeach
+  </tbody>
+</table>
 </div>
     <!-- Optional JavaScript; choose one of the two! -->
 
