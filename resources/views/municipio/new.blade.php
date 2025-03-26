@@ -36,7 +36,7 @@
 </select>
   <div class="mb-3 form-check">
   <button type = "submit" class = "btn btn-primary"> save </button>
-  <a href = "{{route ('municipio.index') }}" class = "btn btn-warning">Cancel</a>
+  <a href = "{{route ('municipios.index') }}" class = "btn btn-warning">Cancel</a>
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
