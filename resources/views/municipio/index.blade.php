@@ -13,7 +13,7 @@
   </head>
   <body>
     <div class="container"> 
-    <h1>Listado de comunas</h1>
+    <h1>Listado de municipios</h1>
 </div>
     <!-- Optional JavaScript; choose one of the two! -->
 
