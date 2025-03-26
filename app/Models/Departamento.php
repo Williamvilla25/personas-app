@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Departamento extends Model
 {
     
-    protected $table = "tb_departamento";
-    protected $primarykey = 'depa_codi';
-    public $timmetamps = false;
+    protected $table = 'tb_departamento';
+    protected $primaryKey = 'depa_codi'; 
+    public $incrementing = false; 
 }
