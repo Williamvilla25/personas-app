@@ -28,3 +28,4 @@ Route::get ('/municipios/{municipio}/edit', [MunicipioController::class,'edit'])
 /* Rutas para departamentos */
 
 Route::get('/departamentos', [DepartamentoController::class, 'index']) ->name('departamentos.index');
+Route::post('/departamentos', [DepartamentosController::class, 'store']) ->name('departamentos.store');
