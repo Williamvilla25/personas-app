@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Municipio extends Model
 {
-    
+
     protected $table = "tb_municipio";
     protected $primarykey = 'muni_codi';
-    public $timmetamps = false;
+    public $incrementing = false;
 }
