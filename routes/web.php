@@ -40,3 +40,5 @@ Route::get ('/departamentos/{departamento}/edit', [DepartamentoController::class
 /*Rutas Para Paises*/
 
 Route::get('/paises', [PaisController::class, 'index']) ->name('paises.index');
+Route::post('/paises', [PaisController::class, 'store']) ->name('paises.store');
+Route::get('/paises/create', [PaisController::class, 'create']) ->name('paises.create');
