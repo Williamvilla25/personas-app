@@ -85,7 +85,16 @@ class PaisController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $pais = Pais::find($id);
+
+    $pais->pais_nomb = $request->name;
+    $pais->pais_capi = $request->code;
+    $pais->save();
+
+    $paises = DB::table('tb_pais')
+        ->get();
+
+    return view('comuna.index', ['comunas' => $comunas]);
     }
 
     /**
