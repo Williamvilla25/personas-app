@@ -13,7 +13,7 @@
   <body>
     <div class="container">
        <h1>Add Country</h1>
-       <form method="POST" action="{{ route('pais.store') }}">
+       <form method = "POST" action = "{{route('paises.store') }}">
         @csrf
   <div class="mb-3">
     <label for="id" class="form-label">Code</label>
