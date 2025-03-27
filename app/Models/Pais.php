@@ -11,4 +11,5 @@ class Pais extends Model
     protected $table = 'tb_pais';
     protected $primaryKey = 'pais_codi'; 
     public $incrementing = false; 
+    protected $keyType = 'string';
 }
