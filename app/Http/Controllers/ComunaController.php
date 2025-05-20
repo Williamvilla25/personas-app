@@ -8,14 +8,16 @@ use Illuminate\Support\Facades\DB;
 
 class ComunaController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $comunas = DB::table('tb_comuna')
             ->join('tb_municipio', 'tb_comuna.muni_codi', '=', 'tb_municipio.muni_codi')
             ->select('tb_comuna.*', 'tb_municipio.muni_nomb')
             ->get();
 
-        return view('comuna.index', ['comunas' => $comunas]);
+        return $request->expectsJson()
+            ? response()->json($comunas)
+            : view('comuna.index', ['comunas' => $comunas]);
     }
 
     public function create()
@@ -29,20 +31,21 @@ class ComunaController extends Controller
 
     public function store(Request $request)
     {
-        $comuna = new Comuna();
-        $comuna->comu_nomb = $request->name;
-        $comuna->muni_codi = $request->code;
-        $comuna->save();
+        $data = $request->expectsJson()
+            ? $request->only(['comu_nomb', 'muni_codi'])
+            : ['comu_nomb' => $request->name, 'muni_codi' => $request->code];
 
-        return redirect()->route('comunas.index');
+        $comuna = Comuna::create($data);
+
+        return $request->expectsJson()
+            ? response()->json(['message' => 'Comuna creada', 'comuna' => $comuna], 201)
+            : redirect()->route('comunas.index');
     }
 
     public function edit($id)
     {
         $comuna = Comuna::findOrFail($id);
-        $municipios = DB::table('tb_municipio')
-            ->orderBy('muni_nomb')
-            ->get();
+        $municipios = DB::table('tb_municipio')->orderBy('muni_nomb')->get();
 
         return view('comuna.edit', [
             'comuna' => $comuna,
@@ -53,18 +56,25 @@ class ComunaController extends Controller
     public function update(Request $request, $id)
     {
         $comuna = Comuna::findOrFail($id);
-        $comuna->comu_nomb = $request->name;
-        $comuna->muni_codi = $request->code;
-        $comuna->save();
 
-        return redirect()->route('comunas.index');
+        $data = $request->expectsJson()
+            ? $request->only(['comu_nomb', 'muni_codi'])
+            : ['comu_nomb' => $request->name, 'muni_codi' => $request->code];
+
+        $comuna->update($data);
+
+        return $request->expectsJson()
+            ? response()->json(['message' => 'Comuna actualizada', 'comuna' => $comuna])
+            : redirect()->route('comunas.index');
     }
 
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         $comuna = Comuna::findOrFail($id);
         $comuna->delete();
 
-        return redirect()->route('comunas.index');
+        return $request->expectsJson()
+            ? response()->json(['message' => 'Comuna eliminada'])
+            : redirect()->route('comunas.index');
     }
 }
