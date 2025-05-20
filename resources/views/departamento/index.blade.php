@@ -1,55 +1,46 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-    <title>Listado Departamentos</title>
+    <title>Listado de Departamentos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
   </head>
-<body>
-  <div class="container">
-    <h1>Listado Departamentos</h1>
-    <a href="{{ route('departamentos.create') }}" class="btn btn-success">Add</a>
-    <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Code</th>
-      <th scope="col">Department</th>
-      <th scope="col">Country</th>
-      <th scope="col">Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-  @foreach ($departamentos as $departamento)
-    <tr>
-      <th scope="row">{{$departamento -> depa_codi}}</th>
-      <td>{{$departamento -> depa_nomb}}</td>
-      <td>{{$departamento -> pais_nomb}}</td>
-      <td>
-      <a href="{{ route('departamentos.edit', ['departamento' => $departamento->depa_codi]) }}"
-      class="btn btn-info">Edit</a>
+  <body>
+    <div class="container mt-4">
+      <h1>Listado de Departamentos</h1>
+      <a href="{{ route('departamentos.create') }}" class="btn btn-success mb-3">Add</a>
 
-      <form action="{{ route('departamentos.destroy', ['departamento' => $departamento->depa_codi]) }}"
-            method="POST" style="display: inline-block">
-          @method('delete')
-          @csrf
-          <input class="btn btn-danger" type="submit" value="Delete">
-      </form>
-      </td>
-    </tr>
-  @endforeach
-   </tbody>
-   </table>
-  </div>
+      <table class="table table-bordered table-hover">
+        <thead class="table-light">
+          <tr>
+            <th scope="col">Code</th>
+            <th scope="col">Department</th>
+            <th scope="col">Country</th>
+            <th scope="col" style="width: 160px;">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          @foreach ($departamentos as $departamento)
+          <tr>
+            <td>{{ $departamento->depa_codi }}</td>
+            <td>{{ $departamento->depa_nomb }}</td>
+            <td>{{ $departamento->pais_nomb }}</td>
+            <td>
+              <a href="{{ route('departamentos.edit', ['departamento' => $departamento->depa_codi]) }}" class="btn btn-info btn-sm">Edit</a>
 
-    <!-- Optional JavaScript; choose one of the two! -->
+              <form action="{{ route('departamentos.destroy', ['departamento' => $departamento->depa_codi]) }}" method="POST" style="display: inline-block;">
+                @csrf
+                @method('DELETE')
+                <input class="btn btn-danger btn-sm" type="submit" value="Delete">
+              </form>
+            </td>
+          </tr>
+          @endforeach
+        </tbody>
+      </table>
+    </div>
 
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>

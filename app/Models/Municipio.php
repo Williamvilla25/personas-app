@@ -2,13 +2,16 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Municipio extends Model
 {
+    protected $table = 'tb_municipio';
+    protected $primaryKey = 'muni_codi';
+    public $timestamps = false;
 
-    protected $table = 'tb_departamento';
-    protected $primaryKey = 'depa_codi'; 
-    public $incrementing = false;  
+    protected $fillable = [
+        'muni_nomb',
+        'depa_codi',
+    ];
 }
