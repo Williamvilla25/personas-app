@@ -5,8 +5,11 @@ namespace App\Http\Controllers\api;
 use App\Models\Municipio;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
-class MunicipiosController extends Controller
+
+
+class MunicipioController extends Controller
 {
     /**
      * Display a listing of the resource.

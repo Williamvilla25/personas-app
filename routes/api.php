@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\api\ComunaController;
-use App\Http\Controllers\api\MunicipiosController;  
+use App\Http\Controllers\api\MunicipioController;  
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 

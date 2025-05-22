@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api;
 use App\Models\Comuna;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ComunaController extends Controller
 {
@@ -16,13 +17,11 @@ class ComunaController extends Controller
     public function index()
     {
         $comunas = DB::table('tb_comuna')
-            ->join('tb_municipio', 'tb_comuna.muni_codi', '=', 'tb_municipio.muni_codi')
-            ->select('tb_comuna.*', 'tb_municipio.muni_nomb')
-            ->get();
+        ->join('tb_municipio', 'tb_comuna.muni_codi', '=', 'tb_municipio.muni_codi')
+        ->select('tb_comuna.*', 'tb_municipio.muni_nomb')
+        ->get();
 
-        return $request->expectsJson()
-            ? response()->json($comunas)
-            : view('comuna.index', ['comunas' => $comunas]);
+    return response()->json($comunas);
     }
 
     /**
