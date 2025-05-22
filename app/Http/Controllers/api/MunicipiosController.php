@@ -15,7 +15,10 @@ class MunicipiosController extends Controller
      */
     public function index()
     {
-        //
+        $municipios = DB ::table('tb_municipio')
+            ->orderby('muni_nomb')
+            ->get();
+            return json_encode(['municipios' => $municipios]);
     }
 
     /**

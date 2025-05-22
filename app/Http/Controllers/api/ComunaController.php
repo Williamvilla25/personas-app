@@ -48,7 +48,12 @@ class ComunaController extends Controller
      */
     public function show($id)
     {
-        //
+        $comuna = Comuna::find($id);
+        $municipios = DB::table('tb_municipio')
+        ->orderBy('muni_nomb')
+        ->get();
+
+        return json_encode(['comuna' => $comuna, 'municipios' => $municipios]);
     }
 
     /**
@@ -78,11 +83,10 @@ class ComunaController extends Controller
     {
         $comuna = Comuna::find($id);
         $comuna->delete();
-        $comuna = DB::table('tb_comuna')
-            ->join('tb_municipio', 'tb_comuna.muni_codi', '=', 'tb_municipio.muni_codi')
-            ->select('tb_comuna.*', 'tb_municipio.muni_nomb')
-            ->get();
-
-        return json_encode(['comunas' => $comuna, 'success' => true]);
+        $comunas = DB::table('tb_comuna')
+        ->join('tb_municipio', 'tb_comuna.muni_codi', '=', 'tb_municipio.muni_codi')
+        ->select('tb_comuna.*', 'tb_municipio.muni_nomb')
+        ->get();
+        return json_encode(['comunas' => $comunas, 'success' => true]);
     }
 }
